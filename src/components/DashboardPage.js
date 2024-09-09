@@ -3,6 +3,8 @@ import { useNavigate, Link } from "react-router-dom";
 
 const DashboardPage = () => {
    const [role, setRole] = useState(null);
+   const [username, setUsername] = useState(null);
+   const [userEmail, setUserEmail] = useState(null);
    const [profileImage, setProfileImage] = useState(""); // State for profile image
    const navigate = useNavigate();
 
@@ -17,6 +19,16 @@ const DashboardPage = () => {
       const storedRole = localStorage.getItem("role");
       if (storedRole) {
          setRole(storedRole);
+      }
+
+      const storedUsername = localStorage.getItem("user_display_name");
+      if (storedUsername) {
+         setUsername(storedUsername);
+      }
+
+      const storedUserEmail = localStorage.getItem("user_email");
+      if (storedUserEmail) {
+         setUserEmail(storedUserEmail);
       }
 
       const storedImage =
@@ -83,7 +95,10 @@ const DashboardPage = () => {
                />
                <div className="ml-6">
                   <h2 className="text-xl font-semibold text-gray-800">
-                     Welcome, {role ? role : "User"}!
+                     Welcome, {username ? username : "User"}!
+                  </h2>
+                  <h2 className="text-xl font-semibold text-gray-800">
+                     Email: {userEmail}
                   </h2>
                   {role && role.includes("administrator") && (
                      <p className="text-blue-500">You are an Administrator</p>

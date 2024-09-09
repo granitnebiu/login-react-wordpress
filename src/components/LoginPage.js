@@ -26,6 +26,11 @@ const LoginPage = () => {
             // Check if the role exists in the response
             if (response.data.role && response.data.role[0]) {
                localStorage.setItem("role", response.data.role[0]);
+               localStorage.setItem(
+                  "user_display_name",
+                  response.data.user_display_name
+               );
+               localStorage.setItem("user_email", response.data.user_email);
             } else {
                alert("Role information is missing from the response.");
             }
